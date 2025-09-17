@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Meteorology from "./components/Meteorology";
 
 function App() {
+   const appid = process.env.REACT_APP_OPEN_WEATHER_KEY
+   const [weatherData, setWeatherData] = useState(null)
+
+   const fetchWeather = async (city) => {
+      try{
+         const responseGeo = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${appid}`)
+         const dataGeo = await responseGeo.json()
+
+         if(!dataGeo.length){
+            alert('Cidade não encontrada')
+            return
+         }
+         const {lat, lon} = dataGeo[0]
+
+         const responseWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=pt_br&appid=${appid}`)
+         const weather = await responseWeather.json()
+         setWeatherData(weather)
+      } catch (err) {
+         console.error('Erro ao buscar dados:', err)
+      }
+   }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Meteorology meteorologyData={weatherData} onSearch={fetchWeather} />
+    </>
   );
 }
 

@@ -1,0 +1,74 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    font-size: large;
+    text-align: center;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    align-items: center;
+}
+
+.app-container{
+    background-color:rgb(246, 248, 253);
+    border: solid 1px rgb(90, 139, 255);
+    border-radius: 5px;
+    max-width: 50%;
+    margin: 10px auto;
+}
+
+.custom-button{
+    margin: 5px;
+    padding: 2px 5px;
+    font-size: 16px;
+    background-color: rgb(90, 139, 255);
+    border: 1px solid rgb(28, 96, 255);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-button:hover{
+    background-color: rgb(28, 95, 250);
+}
+
+.meteorology-summary{
+    text-align: center;
+}
+
+.meteorology-row{
+    position: relative;
+}
+
+.meteorology-details{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.current-meteo-info{
+    max-width: 90%;
+    margin: 10px auto;
+}
+
+.card{
+    background-color: rgb(215, 246, 250);
+    border: 1px solid rgb(161, 154, 253);
+    border-radius: 10px;
+    padding: 50px 0 50px 0;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}
+
+.card-description{
+    position: absolute;
+    font-style: italic;
+    top: -10px;
+    left: 5px;
+    font-size: 14px;
+}
