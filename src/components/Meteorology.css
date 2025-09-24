@@ -72,3 +72,14 @@ h1{
     left: 5px;
     font-size: 14px;
 }
+
+.custom-table{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.custom-table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
